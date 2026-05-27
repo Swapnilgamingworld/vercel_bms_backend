@@ -16,8 +16,9 @@ const User = require('./models/User');
 const app = express();
 
 // Configure CORS for production
+const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$$/, '') : undefined;
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: frontendUrl,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
